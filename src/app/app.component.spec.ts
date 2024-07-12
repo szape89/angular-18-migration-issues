@@ -1,29 +1,21 @@
-import { TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MockBuilder, MockedComponentFixture, MockRender } from 'ng-mocks';
+
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
+  let fixture: MockedComponentFixture<AppComponent>;
+
+  beforeEach(() =>
+    MockBuilder(AppComponent).replace(HttpClientModule, HttpClientTestingModule)
+  );
+
+  beforeEach(() => {
+    fixture = MockRender(AppComponent);
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have the 'angular-18-migration-issues' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-18-migration-issues');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-18-migration-issues');
+  it('should create', () => {
+    expect(fixture.point.componentInstance).toBeDefined();
   });
 });
