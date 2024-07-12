@@ -1,7 +1,11 @@
 <div>
-  <div *ngIf="param; else loading">
-    <div>content</div>
-  </div>
+  @if (param) {
+    <div>
+      <div>content</div>
+    </div>
+  } @else {
+    <div>loading</div>
+  }
   <ng-template #loading>
     <div>loading</div>
   </ng-template>
