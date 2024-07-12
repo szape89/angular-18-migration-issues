@@ -1,5 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {} from '@angular/common/http';
+import {} from '@angular/common/http/testing';
 import { MockBuilder, MockedComponentFixture, MockRender } from 'ng-mocks';
 
 import { AppComponent } from './app.component';
